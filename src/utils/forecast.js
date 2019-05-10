@@ -18,6 +18,7 @@ const forecast = (latitude, longitude, callback) => {
       // the the request gives invalid response, such as coordinate pair
       callback('Unable to find location', undefined);
     } else {
+      console.log(body.daily.data[0]);
       const temp = body.currently.temperature;
       const rainProb = body.currently.precipProbability;
 
@@ -25,7 +26,11 @@ const forecast = (latitude, longitude, callback) => {
         undefined,
         `${
           body.daily.data[0].summary
-        }. It is currently ${temp} degrees out. There is ${rainProb}% chance of rain.`
+        }. It is currently ${temp} degrees out. There is ${rainProb}% chance of rain.
+          Humidity  : ${body.daily.data[0].humidity * 100}% 
+          Wind Speed: ${body.daily.data[0].windSpeed} km/h 
+          Pressure  : ${body.daily.data[0].pressure} hPa 
+          UV Index  : ${body.daily.data[0].uvIndex}`
       );
     }
   });
