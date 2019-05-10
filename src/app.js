@@ -5,8 +5,9 @@ const forecast = require('./utils/forecast');
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs'); // We need to differentiate between partials and render
-
 const app = express(); // This generate an instance of the application
+
+const port = process.env.PORT || 3000;
 
 // To join all given PATH SEGMENTS
 // Define paths for Express config
@@ -124,6 +125,6 @@ app.get('*', (req, res) => {
 // app.com/help
 // app.com/about
 
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+app.listen(port, () => {
+  console.log('Server is up on port ' + port);
 });
